@@ -24,6 +24,7 @@ export class VehicleComponent {
 
     async getPrice(): Promise<number> {
         const priceElement = await this.priceElement;
+        await priceElement.waitForDisplayed();
         const priceText = await priceElement.getText();
 
         if (priceText.startsWith(TEST_DATA.DCP_CARS_PRODUCT_TILE_PRICE_TEXT)) {

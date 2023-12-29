@@ -27,7 +27,7 @@ jobs:
     
       - name: Run tests and generate Allure report
         run: |
-          npm run wdio
+          npm run wdio-gh
           npm run generate-report
       
       - name: Upload allure report artifact

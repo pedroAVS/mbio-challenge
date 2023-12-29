@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio run ./configs/wdio.saucelabs.conf.ts",
+    "wdio-gh": "HEADLESS=true wdio run ./configs/wdio.conf.ts",
     "wdio": "node ./src/utils/prompt.js && wdio ./configs/wdio.conf.ts",
     "generate-report": "allure generate ./allure-results — clean"
   },
