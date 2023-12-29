@@ -2,6 +2,7 @@
 allure-results/
 allure-report/
 results/
+errorShots/
 
 # Logs
 logs
