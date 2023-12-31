@@ -9,7 +9,9 @@
     "wdio-sauce": "wdio run ./configs/wdio.saucelabs.conf.ts",
     "generate-report": "allure generate ./allure-results — clean",
     "test-chrome": "wdio run ./configs/wdio.chrome.conf.ts",
-    "test-firefox": "wdio run ./configs/wdio.firefox.conf.ts"
+    "test-firefox": "wdio run ./configs/wdio.firefox.conf.ts",
+    "test--gha-chrome": "HEADLESS=true wdio run ./configs/wdio.chrome.conf.ts",
+    "test-gha-firefox": "HEADLESS=true wdio run ./configs/wdio.firefox.conf.ts"
   },
   "keywords": [],
   "author": "",

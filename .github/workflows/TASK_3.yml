@@ -36,7 +36,7 @@ jobs:
           if [[ "${{ github.event_name }}" != "workflow_dispatch" ]]; then
             BROWSER="chrome"
           fi
-          npm run test-${BROWSER}
+          npm run test--gha-${BROWSER}
           npm run generate-report
       
       - name: Upload allure report artifact
