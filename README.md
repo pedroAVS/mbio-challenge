@@ -34,21 +34,20 @@ chmod +x setup.sh
 This will install Node.js, npm, and the project dependencies.
 
 ## Running the tests locally
-
+chrome:
 ```
-npm run wdio
+npm run test-chrome
+```
+firefox:
+```
+npm run test-firefox
 ```
 generate the report:
 ```
 allure generate && allure open
 ```
 ## Running the test on Docker
-By encapsulating the test suite into a container that behaves the same on every system, we can avoid flakiness due to different browser or platform versions.
-Make sure docker is installed and the docker is running, then do:
-```
-docker build -t mytest -f Dockerfile .
-docker run -it mytest
-```
+WIP - The idea here is to have the tests executed on docker to increase stability. for this I intend to use Selenoid. Not sure if I'll have the time for this as this is new years eve, but This would be something that I would work next.
 ## Running the test on SauceLabs
 Note: WebdriverIO Integration is currently limited to Enterprise customers, so I wasn't able to verify if it was working properly
 [More here](https://docs.saucelabs.com/visual-testing/integrations/webdriverio/)
@@ -57,7 +56,7 @@ npm run wdio-sauce
 ```
 ## Running the tests on GitActions
 
-Currently the tests will execute on push and pull requests to the Main repository. Report artifacts are made available, as well as an Allure report served on a github page (check the latest pages-build-deployment for the link of the page).
+Currently the tests will execute on push and pull requests to the Main repository using chrome browser. Report artifacts are made available, as well as an Allure report served on a github page (Go [here](https://pedroavs.github.io/mbio-challenge) or you can check the latest pages-build-deployment for the link of the page).
 
 The workflow can be triggered manually by accessing "Run Tests and Publish Report" workflow and clicking on "Run workflow"
 
