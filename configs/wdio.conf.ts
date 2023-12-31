@@ -16,12 +16,7 @@ export const config: Options.Testrunner = {
         '../src/tests/**.test.ts'
     ],
     maxInstances: 10,
-    capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            args: process.env.HEADLESS === 'true' ? ['headless', 'disable-gpu', 'window-size=1920,1080'] : ['window-size=1920,1080']
-        } 
-    }],
+    capabilities: [],
     logLevel: 'info',
     bail: 0,
     baseUrl: TEST_DATA.BASE_URL,
@@ -38,7 +33,7 @@ export const config: Options.Testrunner = {
         timeout: 60000,
     },
     specFileRetries: 3,
-    specFileRetriesDelay: 1000,
+    specFileRetriesDelay: 1,
 
     afterTest: async (test, { passed }) => {
         if(!passed) {

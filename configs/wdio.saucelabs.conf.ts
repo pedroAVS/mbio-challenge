@@ -91,9 +91,22 @@ export const config: Options.Testrunner = {
         disableWebdriverStepsReporting: true,
     }]],
     specFileRetries: 3,
-    specFileRetriesDelay: 1000,
+    specFileRetriesDelay: 1,
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000,
     },
+
+    afterTest: async (test, { passed }) => {
+        if(!passed) {
+            const screenshot = await browser.takeScreenshot();
+            const dir = './errorShots';
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir, { recursive: true });
+            }
+            const screenshotPath = `./errorShots/${test.title.replace(/ /g, '_')}_${Date.now()}.png`;
+            fs.writeFileSync(screenshotPath, screenshot, 'base64');
+            allure.addAttachment('Screenshot', Buffer.from(screenshot, 'base64'), 'image/png');
+        }
+    }
 }

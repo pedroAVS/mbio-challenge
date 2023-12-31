@@ -8,6 +8,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser to run tests in (chrome or firefox)'
+        required: true
+        default: 'chrome'
 
 jobs:
   test:
@@ -27,7 +32,7 @@ jobs:
     
       - name: Run tests and generate Allure report
         run: |
-          npm run wdio-gh
+          npm run test-${{ github.event.inputs.browser }}
           npm run generate-report
       
       - name: Upload allure report artifact
@@ -56,6 +61,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v2
         env:
-          PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history

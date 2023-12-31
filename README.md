@@ -42,11 +42,18 @@ generate the report:
 ```
 allure generate && allure open
 ```
+## Running the test on Docker
+By encapsulating the test suite into a container that behaves the same on every system, we can avoid flakiness due to different browser or platform versions.
+Make sure docker is installed and the docker is running, then do:
+```
+docker build -t mytest -f Dockerfile .
+docker run -it mytest
+```
 ## Running the test on SauceLabs
 Note: WebdriverIO Integration is currently limited to Enterprise customers, so I wasn't able to verify if it was working properly
 [More here](https://docs.saucelabs.com/visual-testing/integrations/webdriverio/)
 ```
-npm run test
+npm run wdio-sauce
 ```
 ## Running the tests on GitActions
 

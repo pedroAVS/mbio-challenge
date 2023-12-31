@@ -26,6 +26,10 @@
     },
     "include": [
         "src",
-        "configs/wdio.conf.ts"
+        "wdio.conf.ts",
+        "configs/wdio.conf.ts",
+        "configs/wdio.chrome.conf.ts",
+        "configs/wdio.firefox.conf.ts",
+        "configs/wdio.saucelabs.conf.ts"
     ]
 }
