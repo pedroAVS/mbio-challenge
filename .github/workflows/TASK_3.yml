@@ -32,7 +32,11 @@ jobs:
     
       - name: Run tests and generate Allure report
         run: |
-          npm run test-${{ github.event.inputs.browser }}
+          BROWSER=${{ github.event.inputs.browser }}
+          if [[ "${{ github.event_name }}" != "workflow_dispatch" ]]; then
+            BROWSER="chrome"
+          fi
+          npm run test-${BROWSER}
           npm run generate-report
       
       - name: Upload allure report artifact
