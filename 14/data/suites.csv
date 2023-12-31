@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Dec 31 17:57:06 GMT 2023","Sun Dec 31 17:58:05 GMT 2023","58840","","Vehicle Inquiry","","","","should show error on invalid inquiry for highest value vehicle",""
+"passed","Sun Dec 31 17:56:59 GMT 2023","Sun Dec 31 17:57:06 GMT 2023","7788","","Vehicle Inquiry","","","","""before all"" hook for Vehicle Inquiry",""
