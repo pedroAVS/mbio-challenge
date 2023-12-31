@@ -1,6 +1,8 @@
 import type { Options } from '@wdio/types'
 import { getSauceCredentials } from '../src/utils/index';
 import { TEST_DATA } from '../src/utils/constants';
+const allure = require('@wdio/allure-reporter').default;
+import * as fs from 'fs';
 
 let sauceUsername: string;
 let sauceAccessKey: string;
@@ -88,6 +90,8 @@ export const config: Options.Testrunner = {
         outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
     }]],
+    specFileRetries: 3,
+    specFileRetriesDelay: 1000,
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000,

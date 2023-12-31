@@ -1,12 +1,13 @@
 import Page from "./page";
-import { CookieComponent, 
-        FilterComponent, 
-        AuthComponent,
-        VehicleComponent 
-    } from "../components";
+import {
+    CookieComponent,
+    FilterComponent,
+    AuthComponent,
+    VehicleComponent
+} from "../components";
 import { SELECTORS } from "../utils/constants";
 
-class ShopPage extends  Page {
+class ShopPage extends Page {
     cookieComponent = new CookieComponent();
     filterComponent = new FilterComponent();
     authComponent = new AuthComponent();
@@ -14,7 +15,7 @@ class ShopPage extends  Page {
     get showMoreBtn() { return $(SELECTORS.SHOW_MORE_BUTTON) }
     get loader() { return $(SELECTORS.LOADER); }
 
-    async open (): Promise<string> {
+    async open(): Promise<string> {
         return super.open('');
     }
 
@@ -23,12 +24,13 @@ class ShopPage extends  Page {
     }
 
     async loadAllVehicles(): Promise<void> {
+        const showMoreBtn = await this.showMoreBtn;
         while (true) {
             try {
-                if (await this.showMoreBtn.isDisplayed()) {
-                    await this.showMoreBtn.scrollIntoView();
-                    await this.showMoreBtn.waitForClickable();
-                    await this.showMoreBtn.click();
+                if (await showMoreBtn.isDisplayed()) {
+                    await showMoreBtn.scrollIntoView();
+                    await showMoreBtn.waitForClickable();
+                    await showMoreBtn.click();
                 } else {
                     break;
                 }
@@ -52,7 +54,7 @@ class ShopPage extends  Page {
                 highestValueVehicle = vehicle;
             }
         }
-        if (highestValueVehicle) {await highestValueVehicle.writeVehicleToFile(); }
+        if (highestValueVehicle) { await highestValueVehicle.writeVehicleToFile(); }
         return highestValueVehicle;
     }
 
@@ -71,7 +73,7 @@ class ShopPage extends  Page {
         await this.authComponent.clickContinueBtn();
         await this.loader.waitForDisplayed({ reverse: true });
     }
-    
+
 }
 
 export default new ShopPage();

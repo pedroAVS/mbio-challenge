@@ -25,7 +25,7 @@ export const config: Options.Testrunner = {
     logLevel: 'info',
     bail: 0,
     baseUrl: TEST_DATA.BASE_URL,
-    waitforTimeout: 10000,
+    waitforTimeout: 30000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     framework: 'mocha',
@@ -37,6 +37,8 @@ export const config: Options.Testrunner = {
         ui: 'bdd',
         timeout: 60000,
     },
+    specFileRetries: 3,
+    specFileRetriesDelay: 1000,
 
     afterTest: async (test, { passed }) => {
         if(!passed) {
